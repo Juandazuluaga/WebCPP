@@ -1,23 +1,131 @@
 [
   {
     "id": 1,
-    "name": "Memoria USB Kingston 256GB",
-    "price": 135000,
-    "category": "almacenamiento",
-    "image": "assets/img/usb256.jpg"
+    "name": "Refill Ink Epson",
+    "brand": "Epson",
+    "category": "tintas-toner",
+    "featured": true,
+    "type": "variable",
+    "image": "assets/img/refill-epson.jpg",
+    "variants": [
+      { "color": "Negra", "price": 25000 },
+      { "color": "Cian", "price": 25000 },
+      { "color": "Magenta", "price": 25000 },
+      { "color": "Yellow", "price": 25000 },
+      { "color": "Kit 4 Colores (20% OFF)", "price": 80000 }
+    ]
   },
   {
     "id": 2,
-    "name": "Impresora Epson L3250",
-    "price": 855000,
-    "category": "impresoras",
-    "image": "assets/img/epsonl3250.jpg"
+    "name": "Refill Ink Canon",
+    "brand": "Canon",
+    "category": "tintas-toner",
+    "featured": true,
+    "type": "variable",
+    "image": "assets/img/refill-canon.jpg",
+    "variants": [
+      { "color": "Negra", "price": 25000 },
+      { "color": "Cian", "price": 25000 },
+      { "color": "Magenta", "price": 25000 },
+      { "color": "Yellow", "price": 25000 },
+      { "color": "Kit 4 Colores (20% OFF)", "price": 80000 }
+    ]
   },
   {
     "id": 3,
-    "name": "Tinta Epson Negra 664",
-    "price": 45000,
-    "category": "tintas",
-    "image": "assets/img/tinta664.jpg"
-  }
+    "name": "Refill Ink HP",
+    "brand": "HP",
+    "category": "tintas-toner",
+    "featured": true,
+    "type": "variable",
+    "image": "assets/img/refill-hp.jpg",
+    "variants": [
+      { "color": "Negra", "price": 25000 },
+      { "color": "Cian", "price": 25000 },
+      { "color": "Magenta", "price": 25000 },
+      { "color": "Yellow", "price": 25000 },
+      { "color": "Kit 4 Colores (20% OFF)", "price": 80000 }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Tinta Epson Original",
+    "brand": "Epson",
+    "category": "tintas-toner",
+    "type": "variable",
+    "image": "assets/img/epson-original.jpg",
+    "variants": [
+      { "color": "Negra", "price": 45000 },
+      { "color": "Cian", "price": 45000 },
+      { "color": "Magenta", "price": 45000 },
+      { "color": "Yellow", "price": 45000 },
+      { "color": "Kit 4 Colores (20% OFF)", "price": 140000 }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Toner Genérico 85A",
+    "brand": "HP",
+    "category": "tintas-toner",
+    "type": "simple",
+    "price": 85000,
+    "stock": 10,
+  "featured": false,
+    "image": "assets/img/toner85a.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Toner Genérico 83A",
+    "brand": "HP",
+    "category": "tintas-toner",
+    "type": "simple",
+    "price": 90000,
+    "stock": 10,
+  "featured": false,
+    "image": "assets/img/toner83a.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Otros Toner (Cotiza por referencia)",
+    "category": "tintas-toner",
+    "type": "quote",
+    "image": "assets/img/toner-cotiza.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Memoria USB Kingston 256GB",
+    "brand": "Kingston",
+    "category": "almacenamiento",
+    "type": "simple",
+    "price": 135000,
+    "stock": 15,
+  "featured": false,
+    "image": "assets/img/usb256.jpg"
+  },
+  {
+    "id": 9,
+    "name": "SSD 512GB M.2 SATAIII",
+    "category": "almacenamiento",
+    "type": "simple",
+    "price": 185000,
+    "stock": 5,
+  "featured": false,
+    "image": "assets/img/ssd512.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Partes y Repuestos para Portátiles",
+    "category": "repuestos",
+    "type": "quote",
+    "image": "assets/img/repuestos.jpg"
+  },
+  { "id": 11, 
+  "name": "Teclado USB Genius KB-116", 
+  "brand": "GENIUS", 
+  "category": "perifericos", 
+  "type": "simple",
+   "price": 55000, 
+   "stock": 4,
+  "featured": false,
+   "image": "assets/img/tecladoKB-116.jpg" }
 ]

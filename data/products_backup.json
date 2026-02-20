@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Memoria USB Kingston 256GB",
+    "price": 135000,
+    "category": "almacenamiento",
+    "image": "assets/img/usb256.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Impresora Epson L3250",
+    "price": 855000,
+    "category": "impresoras",
+    "image": "assets/img/epsonl3250.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Tinta Epson Negra 664",
+    "price": 45000,
+    "category": "tintas",
+    "image": "assets/img/tinta664.jpg"
+  }
+]

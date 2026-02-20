@@ -168,3 +168,22 @@ main {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.variant-select {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.badge {
+  display: inline-block;
+  background: #39ff14;
+  color: #000;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
