@@ -1,6 +1,6 @@
 // Seleccionamos el contenedor principal
 const productsContainer = document.querySelector(".products");
-
+const WHATSAPP_NUMBER = "573007492673";
 // Función para formatear precio
 function formatPrice(price) {
   return new Intl.NumberFormat("es-CO", {
@@ -12,8 +12,9 @@ function formatPrice(price) {
 
 // Crear botón WhatsApp
 function createWhatsAppLink(text) {
-  return `https://wa.me/3007492673?text=${encodeURIComponent(text)}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
+
 
 // Función para crear tarjeta HTML
 function createProductCard(product) {
