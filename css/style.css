@@ -279,9 +279,22 @@ main {
 
 .logo-img {
   height: 100px;
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: fadeSlideDown 0.8s ease forwards;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+}
+/* Tablet */
+@media (max-width: 768px) {
+  .logo-img {
+    height: 70px;
+  }
+}
+
+/* Celular pequeño */
+@media (max-width: 480px) {
+  .logo-img {
+    height: 55px;
+  }
 }
 
 .logo-text {
