@@ -1,6 +1,7 @@
 // Seleccionamos el contenedor principal
 const productsContainer = document.querySelector(".products");
 const WHATSAPP_NUMBER = "573007492673";
+let currentCategory = "all";
 // Función para formatear precio
 function formatPrice(price) {
   return new Intl.NumberFormat("es-CO", {
@@ -98,17 +99,28 @@ async function renderProducts() {
 
     displayProducts(allProducts);
     setupFilters();
+    setupSorting();
 
   } catch (error) {
     console.error("Error cargando productos:", error);
   }
 }
 function displayProducts(products) {
-  productsContainer.innerHTML = products
-    .map(product => createProductCard(product))
-    .join("");
 
-  activateVariableButtons(products);
+  productsContainer.classList.add("fade-out");
+
+  setTimeout(() => {
+
+    productsContainer.innerHTML = products
+      .map(product => createProductCard(product))
+      .join("");
+
+    activateVariableButtons(products);
+
+    productsContainer.classList.remove("fade-out");
+    productsContainer.classList.add("fade-in");
+
+  }, 200);
 }
 function setupFilters() {
   const filterButtons = document.querySelectorAll(".category");
@@ -121,15 +133,9 @@ function setupFilters() {
       button.classList.add("active");
 
       const category = button.dataset.category;
+      currentCategory = category;
 
-      if (category === "all") {
-        displayProducts(allProducts);
-      } else {
-        const filtered = allProducts.filter(
-          product => product.category === category
-        );
-        displayProducts(filtered);
-      }
+   applyFiltersAndSort();
 
     });
   });
@@ -157,6 +163,33 @@ function activateVariableButtons(products) {
       });
     }
   });
+}
+
+function setupSorting() {
+  const sortSelect = document.getElementById("sortSelect");
+
+  sortSelect.addEventListener("change", () => {
+    applyFiltersAndSort();
+  });
+}
+
+function applyFiltersAndSort() {
+
+  let filtered = currentCategory === "all"
+    ? [...allProducts]
+    : allProducts.filter(p => p.category === currentCategory);
+
+  const sortValue = document.getElementById("sortSelect").value;
+
+  if (sortValue === "asc") {
+    filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+  }
+
+  if (sortValue === "desc") {
+    filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+  }
+
+  displayProducts(filtered);
 }
 
 // Ejecutamos al cargar

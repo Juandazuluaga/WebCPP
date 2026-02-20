@@ -8,13 +8,19 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header-content">
-      <h1 class="logo">CompuPrinter</h1>
-      <button class="menu-btn">☰</button>
+ <div class="promo-banner">
+  🚚 En El Santuario la entrega es GRATIS
+</div>
+
+<header class="header">
+  <div class="container header-content">
+    <div class="logo-container">
+      <img src="assets/img/compuprinter-logo.png" class="logo-img" alt="CompuPrinter">
+      <span class="logo-text"></span>
     </div>
-  </header>
+    <button class="menu-btn">☰</button>
+  </div>
+</header>
 
   <!-- CATEGORÍAS -->
   <section class="categories">
@@ -27,6 +33,14 @@
     <button class="category" data-category="repuestos">Repuestos</button>
   </div>
 </section>
+<!--selector de ordenamiento -->
+<div class="sort-container container">
+  <select id="sortSelect">
+    <option value="default">Ordenar por</option>
+    <option value="asc">Precio: menor a mayor</option>
+    <option value="desc">Precio: mayor a menor</option>
+  </select>
+</div>
 
   <!-- PRODUCTOS -->
   <main class="products container">
