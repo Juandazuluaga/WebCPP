@@ -12,12 +12,25 @@ function formatPrice(price) {
 }
 
 // Crear botón WhatsApp
-function createWhatsAppLink(text) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+function createWhatsAppLink(productName, extraInfo = "") {
+  const baseMessage = `
+Hola 
+
+Estoy interesado en el siguiente producto:
+
+ Producto: ${productName}
+${extraInfo}
+
+¿Está disponible?
+Gracias.
+  `;
+
+  return `https://wa.me/573007492673?text=${encodeURIComponent(baseMessage)}`;
 }
 
 
 // Función para crear tarjeta HTML
+
 function createProductCard(product) {
 
   // PRODUCTO SIMPLE
@@ -28,16 +41,19 @@ function createProductCard(product) {
         ${product.featured ? `<span class="badge">Más Vendido</span>` : ""}
         <h3 class="product-name">${product.name}</h3>
         <p class="product-price">${formatPrice(product.price)}</p>
-        <a href="${createWhatsAppLink(`Hola, me interesa ${product.name}`)}" 
+        <a href="${createWhatsAppLink(product.name)}" 
            target="_blank"
            class="whatsapp-btn">
           Comprar por WhatsApp
+        </a>
+        <a href="product.html?id=${product.id}" class="details-btn">
+          Ver producto
         </a>
       </div>
     `;
   }
 
-  // PRODUCTO VARIABLE (con variantes)
+  // PRODUCTO VARIABLE
   if (product.type === "variable") {
 
     const options = product.variants
@@ -57,9 +73,12 @@ function createProductCard(product) {
           ${options}
         </select>
 
-        <a href="#" 
-           class="whatsapp-btn variable-btn">
+        <a href="#" class="whatsapp-btn variable-btn">
           Comprar por WhatsApp
+        </a>
+
+        <a href="product.html?id=${product.id}" class="details-btn">
+          Ver producto
         </a>
       </div>
     `;
@@ -72,15 +91,21 @@ function createProductCard(product) {
         <img src="${product.image}" alt="${product.name}" class="product-img">
         <h3 class="product-name">${product.name}</h3>
         <p class="product-price">Cotiza según referencia</p>
-        <a href="${createWhatsAppLink(`Hola, quiero cotizar ${product.name}`)}" 
-           target="_blank"
-           class="whatsapp-btn">
+
+        <a href="#" 
+           class="whatsapp-btn quote-btn"
+           data-name="${product.name}">
           Cotizar por WhatsApp
+        </a>
+
+        <a href="product.html?id=${product.id}" class="details-btn">
+          Ver producto
         </a>
       </div>
     `;
   }
 
+  return "";
 }
 
 // Función principal que renderiza productos
@@ -116,6 +141,7 @@ function displayProducts(products) {
       .join("");
 
     activateVariableButtons(products);
+    activateQuoteButtons();
 
     productsContainer.classList.remove("fade-out");
     productsContainer.classList.add("fade-in");
@@ -154,14 +180,32 @@ function activateVariableButtons(products) {
       const button = card.querySelector(".variable-btn");
 
       button.addEventListener("click", () => {
-        const selectedText = select.options[select.selectedIndex].text;
+  const selectedText = select.options[select.selectedIndex].text;
 
-        const message = `Hola, me interesa ${product.name} - ${selectedText}`;
-
-        button.href = createWhatsAppLink(message);
-        button.target = "_blank";
-      });
+  button.href = createWhatsAppLink(
+    product.name,
+    `🎨 Variante: ${selectedText}`
+  );
+});
     }
+  });
+}
+
+function activateQuoteButtons() {
+  const quoteButtons = document.querySelectorAll(".quote-btn");
+
+  quoteButtons.forEach(button => {
+    button.addEventListener("click", () => {
+
+      const productName = button.dataset.name;
+
+      button.href = createWhatsAppLink(
+        productName,
+        "📝 Solicitud de cotización"
+      );
+
+      button.target = "_blank";
+    });
   });
 }
 
