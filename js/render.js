@@ -14,11 +14,11 @@ function formatPrice(price) {
 // Crear botón WhatsApp
 function createWhatsAppLink(productName, extraInfo = "") {
   const baseMessage = `
-Hola 
+Hola 👋
 
 Estoy interesado en el siguiente producto:
 
- Producto: ${productName}
+📦 Producto: ${productName}
 ${extraInfo}
 
 ¿Está disponible?

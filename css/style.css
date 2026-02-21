@@ -413,3 +413,21 @@ main {
   flex-direction: column;
   gap: 15px;
 }
+
+
+
+.share-btn {
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid #39ff14;
+  color: #39ff14;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.share-btn:hover {
+  background: #39ff14;
+  color: #000;
+}

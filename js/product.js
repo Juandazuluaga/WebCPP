@@ -14,8 +14,21 @@ function formatPrice(price) {
   }).format(price);
 }
 
-function createWhatsAppLink(text) {
-  return `https://wa.me/573007492673?text=${encodeURIComponent(text)}`;
+function createWhatsAppLink(productName, extraInfo = "") {
+
+  const message = `
+Hola 👋
+
+Estoy interesado en el siguiente producto:
+
+📦 Producto: ${productName}
+${extraInfo}
+
+¿Está disponible?
+Gracias.
+  `;
+
+  return `https://wa.me/573007492673?text=${encodeURIComponent(message)}`;
 }
 
 function renderProduct(product) {
@@ -50,10 +63,14 @@ function renderProduct(product) {
       <a id="whatsappBtn" class="whatsapp-btn">
         Comprar por WhatsApp
       </a>
+      <button id="shareBtn" class="share-btn">
+  Compartir producto
+</button>
     </div>
   `;
 
   activateWhatsApp(product);
+  activateShare(product);
 }
 
 function activateWhatsApp(product) {
@@ -87,6 +104,39 @@ function activateWhatsApp(product) {
   }
 
   button.target = "_blank";
+}
+
+function activateShare(product) {
+
+  const shareBtn = document.getElementById("shareBtn");
+
+  shareBtn.addEventListener("click", async () => {
+
+    const productUrl = window.location.href;
+
+    if (navigator.share) {
+      // Móvil (menú nativo)
+      try {
+        await navigator.share({
+          title: product.name,
+          text: `Mira este producto en CompuPrinter: ${product.name}`,
+          url: productUrl
+        });
+      } catch (error) {
+        console.log("Error al compartir:", error);
+      }
+    } else {
+      // Escritorio → copiar enlace
+      try {
+        await navigator.clipboard.writeText(productUrl);
+        alert("Enlace copiado al portapapeles");
+      } catch (error) {
+        alert("No se pudo copiar el enlace");
+      }
+    }
+
+  });
+
 }
 // Cargar producto correctamente
 async function loadProduct() {
